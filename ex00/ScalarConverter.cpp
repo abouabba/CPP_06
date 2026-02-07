@@ -15,12 +15,42 @@ bool isSpecial(std::string &s) {
             s == "+inf" || s == "-inf");
 }
 
+void printchar(double d) {
+    if (d < 0 || d > 127)
+        std::cout << "char : impossible" << std::endl;
+    else if (!isprint((char)d))
+        std::cout << "char : Non displayable" << std::endl;
+    else
+        std::cout << "char : " << (char)d << std::endl;
+}
+
+void printint(double d) {
+    if(d < INT_MIN || d > INT_MAX)
+        std::cout << "int : impossible" << std::endl;
+    else
+        std::cout << "int :" << (int)d << std::endl;
+}
+
+void printfloat(double d) {
+    float f = (float)d;
+    std::cout << "float :" << f;
+    if (f == (int)f)
+        std::cout << ".0";
+    std::cout << "f" << std::endl;
+}
+
+void printdouble(double d) {
+    std::cout << "double :" << d;
+    if (d == (int)d)
+        std::cout << ".0";
+    std::cout << std::endl;
+}
 void ScalarConverter::convert(std::string value) {
 
     if (isSpecial(value)) {
         std::cout << "char: impossible" << std::endl;
         std::cout << "int: impossible" << std::endl;
-        if (value.back() == 'f') {
+        if (value.size() - 1 == 'f') {
             std::cout << "float: " << value << std::endl;
             std::cout << "double: " << value.substr(0, value.size() - 1) << std::endl;
         }
@@ -38,5 +68,12 @@ void ScalarConverter::convert(std::string value) {
         std::cout << "double :" << static_cast<double>(value[0]) << ".0" << std::endl;
         return ;
     }
-    
+    double ch = strtod(value.c_str(), NULL);
+
+    printchar(ch);
+    printint(ch);
+    printfloat(ch);
+    printdouble(ch);
+
+    return;
 }

@@ -1,18 +1,11 @@
 # include "ScalarConverter.hpp"
 
-int main() {
+int main(int ac, char **av) {
 
     ScalarConverter conv;
-    std::string type;
-    std::cout << "type your string :";
-    if (!getline(std::cin, type)) {
-        std::cout << "^D" << std::endl;
+    if (ac != 2) {
+        std::cout << "Usage: ./convert <literal>" << std::endl;
         return 1;
     }
-    // if (!type.empty()) {
-    //     std::cout << "you should type string" << std::endl;
-    //     return 1;
-    // }
-    conv.convert(type);
-    // std::cout << "char :" << type << std::endl;
+    conv.convert(av[1]);
 }
