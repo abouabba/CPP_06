@@ -70,19 +70,28 @@ void ScalarConverter::convert(std::string value) { // "fgfsdvf"  "534" "3++4"
         return ;
     }
     try {
-        std::stringstream dd(value);
-        if (dd)
-            throw std::invalid_argument("invalid literal");
-    } catch (std::exception& e) {
-        std::cout << e.what() << std::endl;
-        return ;
-    }
-    double ch = strtod(value.c_str(), NULL);
+        char *ptr;
+        double ch = strtod(value.c_str(), &ptr);
 
-    printchar(ch);
-    printint(ch);
-    printfloat(ch);
-    printdouble(ch);
+        if (*ptr == '\0' || *ptr == 'f') {
+            std::cout << ptr << std::endl;
+            std::cout << ch << std::endl;
+            printchar(ch);
+        }
+        else {
+            std::cout << ptr << std::endl;
+            throw std::runtime_error("invalide literal");
+        }
+        // else if (ch )
+    }
+    catch(const std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+
+    // printchar(ch);
+    // printint(ch);
+    // printfloat(ch);
+    // printdouble(ch);
 
     return;
 }
