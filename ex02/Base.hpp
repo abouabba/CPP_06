@@ -1,8 +1,11 @@
 # ifndef BASE_HPP
 # define BASE_HPP
 
-class Base {
+#include <cstdlib>
+#include <iostream>
+#include <ctime>
 
+class Base {
     public:
         virtual ~Base();
     Base * generate(void);
