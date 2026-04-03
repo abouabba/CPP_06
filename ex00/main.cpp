@@ -2,10 +2,10 @@
 
 int main(int ac, char **av) {
 
-    ScalarConverter conv;
+    // ScalarConverter conv;
     if (ac != 2) {
         std::cout << "Usage: ./convert <literal>" << std::endl;
         return 1;
     }
-    conv.convert(av[1]);
+    ScalarConverter::convert(av[1]);
 }
