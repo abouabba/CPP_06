@@ -26,10 +26,20 @@ void ScalarConverter::printAll(double d) {
 
 
     float f = static_cast<float>(d);
-    std::cout << "float: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
 
+    // std::cout << "float: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
+    // std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;
 
-    std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;
+    if (d == static_cast<int>(d))
+    {
+        std::cout << "float: " << f << ".0f" << std::endl;
+        std::cout << "double: " << d << ".0" << std::endl;
+    }
+    else
+    {
+        std::cout << "float: " << f << "f" << std::endl;
+        std::cout << "double: " << d << std::endl;
+    }
 }
 
 void ScalarConverter::convert(const std::string& literal) {
