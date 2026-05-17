@@ -17,9 +17,9 @@ class ScalarConverter {
         ScalarConverter& operator=(const ScalarConverter& other);
         ~ScalarConverter();
     
-        static void printAll(double d);
-    
+        
     public:
+        static void printAll(double d);
         static void convert(const std::string& literal);
 };
 
