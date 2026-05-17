@@ -7,7 +7,8 @@
 #include <climits>
 #include <limits>
 #include <iomanip>
-#include <cmath>
+#include <cmath>   
+#include <cctype>
 
 class ScalarConverter {
     private:

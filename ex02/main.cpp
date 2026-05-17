@@ -8,8 +8,8 @@ int main()
     Base base;
     Base* obj = base.generate();
 
-    base.identify(obj);   // pointer version
-    base.identify(*obj);  // reference version
+    base.identify(obj);
+    base.identify(*obj);
 
     delete obj;
 }
