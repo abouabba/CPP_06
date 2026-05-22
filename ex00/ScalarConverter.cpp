@@ -8,18 +8,18 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other) {
 }
 ScalarConverter::~ScalarConverter() {}
 
-static bool isNan(double d) {
-    return (d != d);
-}
+// static bool isNan(double d) {
+//     return (d != d);
+// }
 
-static bool isInf(double d) {
-    return (d > std::numeric_limits<double>::max() ||
-            d < -std::numeric_limits<double>::max());
-}
+// static bool isInf(double d) {
+//     return (d > std::numeric_limits<double>::max() ||
+//             d < -std::numeric_limits<double>::max());
+// }
 
 void ScalarConverter::printAll(double d) {
     std::cout << "char: ";
-    if (isNan(d) || isInf(d) || d < 0 || d > 127)
+    if (d < 0 || d > 127)
         std::cout << "impossible" << std::endl;
     else if (!std::isprint(static_cast<int>(d)))
         std::cout << "Non displayable" << std::endl;
@@ -27,7 +27,7 @@ void ScalarConverter::printAll(double d) {
         std::cout << "'" << static_cast<char>(d) << "'" << std::endl;
 
     std::cout << "int: ";
-    if (std::isnan(d) || std::isinf(d) || d < INT_MIN || d > INT_MAX)
+    if (d < INT_MIN || d > INT_MAX)
         std::cout << "impossible" << std::endl;
     else
         std::cout << static_cast<int>(d) << std::endl;
@@ -71,7 +71,7 @@ void ScalarConverter::convert(const std::string& literal) {
         printAll(static_cast<double>(literal[0]));
         return;
     }
-
+    
     char* end;
     double d = std::strtod(literal.c_str(), &end);
 
