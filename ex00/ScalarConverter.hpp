@@ -10,16 +10,22 @@
 #include <cmath>   
 #include <cctype>
 
-class ScalarConverter {
+class ScalarConverter
+{
     private:
+    
         ScalarConverter();
-        ScalarConverter(const ScalarConverter& other);
-        ScalarConverter& operator=(const ScalarConverter& other);
+        ScalarConverter(const ScalarConverter&);
+        ScalarConverter& operator=(const ScalarConverter&);
         ~ScalarConverter();
     
-        
+        static void printFromChar(char c);
+        static void printFromInt(int i);
+        static void printFromFloat(float f);
+        static void printFromDouble(double d);
+    
     public:
-        static void printAll(double d);
+    
         static void convert(const std::string& literal);
 };
 
