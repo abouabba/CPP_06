@@ -78,7 +78,29 @@ void ScalarConverter::printFromDouble(double d) {
 
 void ScalarConverter::convert(const std::string& literal) {
 
-    if (literal.length() == 1 && !std::isdigit(static_cast<unsigned char>(literal[0]))) {
+	
+	if (literal == "nan" || literal == "nanf") {
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl; 
+		std::cout << "float: nanf" << std::endl; 
+		std::cout << "double: nan" << std::endl; 
+		return; 
+	}
+	else if (literal == "+inf" || literal == "+inff") { 
+		std::cout << "char: impossible" << std::endl; 
+		std::cout << "int: impossible" << std::endl; 
+		std::cout << "float: +inff" << std::endl; 
+		std::cout << "double: +inf" << std::endl; 
+		return; 
+	} 
+	else if (literal == "-inf" || literal == "-inff") { 
+		std::cout << "char: impossible" << std::endl; 
+		std::cout << "int: impossible" << std::endl; 
+		std::cout << "float: -inff" << std::endl; 
+		std::cout << "double: -inf" << std::endl; 
+		return; 
+	}
+    else if (literal.length() == 1 && !std::isdigit(static_cast<unsigned char>(literal[0]))) {
         printFromChar(literal[0]);
         return;
     }
