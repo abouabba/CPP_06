@@ -107,12 +107,9 @@ void ScalarConverter::convert(const std::string& literal) {
          literal[literal.length() - 1] == 'F')) {
         char* end;
 
-        double d = std::strtod(literal.c_str(), &end);
+        float f = std::strtof(literal.c_str(), &end);
 
-        if ((*end == 'f' || *end == 'F') &&
-            *(end + 1) == '\0')
-        {
-            float f = static_cast<float>(d);
+        if ((*end == 'f' || *end == 'F') && *(end + 1) == '\0') {
 
             printFromFloat(f);
             return;
@@ -144,11 +141,20 @@ void ScalarConverter::convert(const std::string& literal) {
         {
             if (l < INT_MIN || l > INT_MAX)
             {
-                std::cout << "int overflow" << std::endl;
+                std::cout << "char: ";
+                if (l < 0 || l > 127)
+                    std::cout << "impossible" << std::endl;
+                else if (!std::isprint(l))
+                    std::cout << "Non displayable" << std::endl;
+                else
+                    std::cout << "'" << static_cast<char>(l) << "'" << std::endl;
+
+                std::cout << "int: impossible" << std::endl;
+                std::cout << "float: " << static_cast<float>(l) << ".0f" << std::endl;
+                std::cout << "double: " << static_cast<double>(l) << ".0" << std::endl;
                 return;
             }
-
-            int i = static_cast<int>(l);
+            int i = atoi(literal.c_str());
 
             printFromInt(i);
             return;
