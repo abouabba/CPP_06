@@ -26,7 +26,7 @@ void ScalarConverter::printFromChar(char c) {
 
 void ScalarConverter::printFromInt(int i) {
     std::cout << "char: ";
-    if (isNan(i) || isInf(i) || i < 0 || i > 127)
+    if (i < 0 || i > 127)
         std::cout << "impossible" << std::endl;
     else if (!std::isprint(i))
         std::cout << "Non displayable" << std::endl;
@@ -40,7 +40,7 @@ void ScalarConverter::printFromInt(int i) {
 
 void ScalarConverter::printFromFloat(float f) {
     std::cout << "char: ";
-    if (isNan(f) || isInf(f) || f < 0 || f > 127)
+    if (f < 0 || f > 127)
         std::cout << "impossible" << std::endl;
     else if (!std::isprint(static_cast<int>(f)))
         std::cout << "Non displayable" << std::endl;
@@ -78,7 +78,6 @@ void ScalarConverter::printFromDouble(double d) {
 
 void ScalarConverter::convert(const std::string& literal) {
 
-	
 	if (literal == "nan" || literal == "nanf") {
 		std::cout << "char: impossible" << std::endl;
 		std::cout << "int: impossible" << std::endl; 
@@ -122,8 +121,7 @@ void ScalarConverter::convert(const std::string& literal) {
         std::cout << "invalid literal" << std::endl;
         return;
     }
-    else if (literal.find('.') != std::string::npos)
-    {
+    else if (literal.find('.') != std::string::npos) {
         char* end;
 
         double d = std::strtod(literal.c_str(), &end);
