@@ -109,12 +109,12 @@ void ScalarConverter::convert(const std::string& literal) {
 
         float f = std::strtof(literal.c_str(), &end);
 
+        std::cout << "ggggggggggggggg" << f << std::endl;
         if ((*end == 'f' || *end == 'F') && *(end + 1) == '\0') {
 
             printFromFloat(f);
             return;
         }
-
         std::cout << "invalid literal" << std::endl;
         return;
     }
